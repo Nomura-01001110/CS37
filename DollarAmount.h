@@ -8,8 +8,8 @@ class DollarAmount {
 public:
    // initialize amount from an int64_t value
    DollarAmount(int64_t value)
-   : dollars{value / 100},
-     cents{value % 100}
+   : dollars{value},
+     cents{0}
     { }
 
    // add right's amount to this object's amount
@@ -36,6 +36,12 @@ public:
       } 
    }
 
+
+   // set values for variables: dollars and cents
+   void set(int balance){
+      dollars = balance;
+   }
+
    // uses integer arithmetic to calculate interest amount, 
    // then calls add with the interest amount
    void addInterest(int rate, int divisor) {
@@ -55,7 +61,7 @@ public:
    }
 private:
    int64_t dollars{0};
-   int64_t cents{0}; // dollar amount in pennies
+   int64_t cents{0};
 };
 
 
