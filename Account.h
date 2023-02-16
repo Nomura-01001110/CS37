@@ -8,19 +8,18 @@ class Account {
 public:
    // Account constructor with two parameters  
    Account(std::string accountName, int initialBalance) 
-      : name{accountName} { // assign accountName to data member name
-
-      // validate that the initialBalance is greater than 0; if not,
-      // data member balance keeps its default initial value of 0
-      if (initialBalance > 0) { // if the initialBalance is valid
-          DollarAmount balance{initialBalance};// assign it to data member balance
-      }
+      : name{accountName}
+      {
+          if(initialBalance > 0){
+             balance.set(initialBalance);
+          }
    }
 
    // function that deposits (adds) only a valid amount to the balance
    void deposit(int depositAmount) {
       if (depositAmount > 0) { // if the depositAmount is valid
-         balance.add(balance);
+         DollarAmount addDollar{depositAmount};
+         balance.add(addDollar);
       }
    }
 
@@ -40,7 +39,7 @@ public:
    }
 private:
    std::string name; // account name data member 
-   DollarAmount balance; 
+   DollarAmount balance{0}; 
 }; // end class Account
 
 
