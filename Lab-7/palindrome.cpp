@@ -22,12 +22,23 @@ int main() {
 }
 
 bool testPalindrome(string palindrome, size_t left, size_t right) {
-    while(left != ((left + right) / 2) && right != ((left + right) / 2)){
+    int centerOfString { (left + right) / 2};
+    while(left < (centerOfString + 1) && right > (centerOfString + 1)){
         if(palindrome[left] != palindrome[right]){
-            return false;
         }
+        cout << left << " " << right << "\n";
         left++;
         right--;
     }
+    
+    /*  
+        tagalog
+        Tar a raT
+        taco cat
+        a a  a
+        atasata
+        atraarta
+        ------
+    */
     return true;
 }
